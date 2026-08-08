@@ -3,11 +3,9 @@
 
 .cv { padding-bottom: 44px; }
 
-.cv__masthead {
-  padding: 48px 0 26px;
-  border-bottom: 1px solid var(--rule);
-  margin-bottom: 8px;
-}
+/* No border here: every section rule is drawn by the h1 border-top below,
+   so the masthead adding its own would stack two lines. */
+.cv__masthead { padding: 48px 0 4px; }
 
 .cv__masthead h1 {
   font-family: var(--serif);
@@ -38,10 +36,6 @@
   border-top: 1px solid var(--rule);
 }
 .cv__masthead h1 { padding-top: 0; border-top: 0; margin-top: 0; }
-
-/* The masthead already draws a rule; don't stack a second one on the
-   first markdown heading that follows it. */
-.cv__masthead + h1 { border-top: 0; padding-top: 0; margin-top: 22px; }
 
 .cv ul { margin: 0; padding-left: 19px; color: var(--text-soft); }
 .cv > ul > li { margin-bottom: 9px; }

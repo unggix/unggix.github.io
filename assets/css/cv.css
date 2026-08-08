@@ -1,0 +1,93 @@
+/* CV page. Layers on top of homepage.css; the @media print block is what
+   headless Chrome renders when generating files/Unggi_Lee_CV.pdf. */
+
+.cv { padding-bottom: 44px; }
+
+.cv__masthead {
+  padding: 48px 0 26px;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 8px;
+}
+
+.cv__masthead h1 {
+  font-family: var(--serif);
+  font-size: 1.94rem;
+  font-weight: 600;
+  letter-spacing: -0.008em;
+  margin: 0 0 9px;
+}
+
+.cv__contact {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+.cv__contact .sep { color: var(--text-dim); margin: 0 7px; }
+
+.cv section { padding: 26px 0; border-bottom: 1px solid var(--rule); }
+.cv section:last-child { border-bottom: 0; }
+
+/* Markdown body of _pages/cv.md: "Heading\n======" becomes <h1>. */
+.cv h1:not(.cv__masthead h1) {
+  font-family: var(--serif);
+  font-size: 1.28rem;
+  font-weight: 600;
+  margin: 30px 0 14px;
+  padding-top: 26px;
+  border-top: 1px solid var(--rule);
+}
+.cv__masthead h1 { padding-top: 0; border-top: 0; margin-top: 0; }
+
+.cv ul { margin: 0; padding-left: 19px; color: var(--text-soft); }
+.cv > ul > li { margin-bottom: 9px; }
+.cv ul ul { margin-top: 4px; padding-left: 18px; }
+.cv li::marker { color: var(--text-dim); }
+
+.cv .pubs { color: var(--text-soft); }
+
+.nav__theme { text-decoration: none; }
+
+/* ---------- print ---------- */
+
+@media print {
+  @page { size: A4; margin: 16mm 15mm; }
+
+  html, body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 10.4pt;
+    line-height: 1.5;
+  }
+
+  /* Force the light palette regardless of the reader's theme. */
+  :root, [data-theme="dark"] {
+    --bg: #fff;
+    --text: #000;
+    --text-soft: #1c1c1c;
+    --text-dim: #555;
+    --link: #000;
+    --rule: #bbb;
+  }
+
+  .no-print, .nav, .foot { display: none !important; }
+
+  .wrap { max-width: none; padding: 0; }
+
+  .cv__masthead { padding: 0 0 12px; }
+  .cv__masthead h1 { font-size: 20pt; }
+  .cv__contact { font-size: 9pt; }
+
+  .cv section { padding: 12px 0; }
+  .cv h1:not(.cv__masthead h1) {
+    font-size: 12.5pt;
+    margin: 14px 0 8px;
+    padding-top: 12px;
+  }
+
+  a { color: #000 !important; text-decoration: none; }
+
+  /* Keep entries from splitting across pages. */
+  .cv > ul > li, .pub, .exp__item { break-inside: avoid; }
+  h1, h2 { break-after: avoid; }
+}

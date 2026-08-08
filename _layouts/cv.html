@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CV — {{ site.author.name }}</title>
+  <meta name="description" content="Curriculum vitae of {{ site.author.name }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/homepage.css">
+  <link rel="stylesheet" href="/assets/css/cv.css">
+
+  <script>
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem('theme'); } catch (e) {}
+      var dark = saved ? saved === 'dark'
+                       : window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (dark) document.documentElement.setAttribute('data-theme', 'dark');
+    })();
+  </script>
+</head>
+<body class="cv-page">
+
+<header class="nav no-print">
+  <div class="nav__inner">
+    <nav class="nav__links">
+      <a href="/">&larr; Home</a>
+    </nav>
+    <a class="nav__theme" href="/files/{{ site.author.name | replace: ' ', '_' }}_CV.pdf">Download PDF</a>
+  </div>
+</header>
+
+<main class="wrap cv">
+
+  <header class="cv__masthead">
+    <h1>{{ site.author.name }}</h1>
+    <p class="cv__contact">
+      {{ site.author.employer }} · {{ site.author.location }}<br>
+      <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
+      <span class="sep">/</span><a href="{{ site.url }}">{{ site.url | remove: "https://" }}</a>
+      {% if site.author.googlescholar %}<span class="sep">/</span><a href="{{ site.author.googlescholar }}">Google Scholar</a>{% endif %}
+    </p>
+  </header>
+
+  {{ content }}
+
+  <section>
+    <h2>Publications</h2>
+    <ol class="pubs">
+      {% for post in site.publications reversed %}
+      <li class="pub">
+        <div class="pub__title">
+          {% if post.paperurl %}<a href="{{ post.paperurl }}">{{ post.title }}</a>{% else %}{{ post.title }}{% endif %}
+        </div>
+        {% if post.authors %}
+        {% capture me %}<span class="me">{{ site.author.name }}</span>{% endcapture %}
+        <div class="pub__authors">{{ post.authors | replace: site.author.name, me }}</div>
+        {% endif %}
+        <div class="pub__venue">
+          <em>{{ post.venue }}</em>{% if post.date %}, {{ post.date | date: "%B %Y" }}{% endif %}
+        </div>
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+
+</main>
+
+<footer class="foot no-print">
+  <p>Last updated {{ site.time | date: "%B %Y" }}.</p>
+</footer>
+
+</body>
+</html>

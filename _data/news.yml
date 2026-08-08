@@ -1,0 +1,11 @@
+# Homepage "News" timeline. Newest first — the order here is the order shown.
+# date: short label in the left column. text: supports inline HTML.
+
+- date: "Feb 2026"
+  text: 'Started my <strong>M.S. in Computer Science at DGIST</strong>, joining the <strong>Real-Time Computing Lab</strong> — working on DNN inference offloading for real-time systems.'
+
+- date: "Feb 2026"
+  text: 'Received my <strong>B.S. in Electrical Engineering and Computer Science</strong> from DGIST.'
+
+- date: "Oct 2025"
+  text: '<strong>WardrobeRL</strong> presented at <strong>ICTC 2025</strong> — prompt-aware reinforcement learning for top-bottom outfit recommendation.'

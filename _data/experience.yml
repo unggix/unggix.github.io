@@ -1,0 +1,16 @@
+# Homepage "Experience" section. Newest first.
+# period: right-aligned date range. role / org / org_url / details (list).
+
+- role: "Graduate Research Assistant"
+  org: "Real-Time Computing Lab (RTCL), DGIST"
+  period: "Feb 2026 — Present"
+  details:
+    - "Real-time systems, with a focus on DNN inference offloading between edge devices and servers under latency constraints."
+    - "Image-adaptive JPEG compression: per-image quality factor and quantization table optimization for offloaded inference under variable network bandwidth."
+
+- role: "B.S. in Electrical Engineering and Computer Science"
+  org: "DGIST"
+  period: "Feb 2020 — Feb 2026"
+  details:
+    - "GPA 3.82 / 4.30."
+    - "Course project on prompt-aware reinforcement learning for recommendation, published at ICTC 2025."

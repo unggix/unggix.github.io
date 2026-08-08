@@ -12,10 +12,7 @@
   org: "DGIST"
   period: "2024"
   details:
-    - 'Team research project: <em>Noise Map-Driven Dynamic Frame Processing for Improved Object Detection in Low-Light Conditions</em>.'
-    - "Built a low-light detection pipeline in front of YOLO — Zero-DCE enhancement, CBDNet noise-map estimation, and MFDNet denoising — integrated into the detector's data loader."
-    - "Held the pipeline to real time by exploiting temporal redundancy between frames, processing one frame in five at 20 FPS."
-    - "Improved mAP by roughly 1% over the unenhanced baseline on BDD100k."
+    - 'Year-long team research project on low-light object detection — see <a href="#projects">Projects</a>.'
 
 - role: "Summer Session"
   org: "University of California, Los Angeles (UCLA)"

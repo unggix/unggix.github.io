@@ -245,6 +245,45 @@ p { margin: 0 0 15px; }
 .exp__details li { margin-bottom: 4px; font-size: 0.94rem; }
 .exp__details li::marker { color: var(--text-dim); }
 
+/* ---------- projects ---------- */
+
+.proj { list-style: none; margin: 0; padding: 0; }
+
+.proj__item { padding: 0 0 26px; }
+.proj__item:last-child { padding-bottom: 0; }
+
+.proj__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+}
+
+.proj__name {
+  font-family: var(--serif);
+  font-size: 1.06rem;
+  font-weight: 600;
+}
+.proj__period {
+  color: var(--text-dim);
+  font-size: 0.86rem;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.proj__summary { color: var(--text-soft); font-size: 0.96rem; margin-top: 2px; }
+
+.proj__details {
+  margin: 8px 0 0;
+  padding-left: 17px;
+  color: var(--text-soft);
+}
+.proj__details li { margin-bottom: 4px; font-size: 0.94rem; }
+.proj__details li::marker { color: var(--text-dim); }
+
+.proj__links { margin: 9px 0 0; font-size: 0.9rem; }
+.proj__links .sep { color: var(--text-dim); margin: 0 8px; }
+
 /* ---------- cv + footer ---------- */
 
 #cv p { color: var(--text-soft); margin: 0; }

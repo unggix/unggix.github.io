@@ -1,0 +1,20 @@
+# Homepage "Projects" section. Newest first.
+# name / period / summary (inline HTML ok) / details (list) / links (label + url)
+
+- name: "WardrobeRL"
+  period: "2025"
+  summary: 'Prompt-aware reinforcement learning for recommending top–bottom outfit pairs.'
+  details:
+    - "Course project for Reinforcement Learning, later published at ICTC 2025."
+  links:
+    - label: "IEEE Xplore"
+      url: "https://ieeexplore.ieee.org/document/11388251"
+
+- name: "Noise Map-Driven Dynamic Frame Processing"
+  period: "2024"
+  summary: 'Improving object detection in low-light video without giving up real-time throughput.'
+  details:
+    - "Placed an enhancement front-end before YOLO — Zero-DCE for low-light enhancement, CBDNet for noise-map estimation, and MFDNet for denoising — integrated directly into the detector's data loader."
+    - "Held the pipeline to real time by exploiting temporal redundancy between frames, processing one frame in five at 20 FPS."
+    - "Improved mAP by roughly 1% over the unenhanced baseline on BDD100k."
+    - "Undergraduate Group Research Program (UGRP), DGIST — team of four."

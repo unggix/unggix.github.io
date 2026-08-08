@@ -38,6 +38,7 @@
       <a href="#news">News</a>
       <a href="#publications">Publications</a>
       <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
       <a href="#cv">CV</a>
     </nav>
     <button class="nav__theme" id="theme-toggle" type="button" aria-label="Toggle dark mode">
@@ -118,6 +119,31 @@
         <ul class="exp__details">
           {% for d in job.details %}<li>{{ d }}</li>{% endfor %}
         </ul>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <ul class="proj">
+      {% for p in site.data.projects %}
+      <li class="proj__item">
+        <div class="proj__head">
+          <div class="proj__name">{{ p.name }}</div>
+          <div class="proj__period">{{ p.period }}</div>
+        </div>
+        {% if p.summary %}<div class="proj__summary">{{ p.summary }}</div>{% endif %}
+        {% if p.details %}
+        <ul class="proj__details">
+          {% for d in p.details %}<li>{{ d }}</li>{% endfor %}
+        </ul>
+        {% endif %}
+        {% if p.links %}
+        <p class="proj__links">
+          {% for l in p.links %}{% unless forloop.first %}<span class="sep">/</span>{% endunless %}<a href="{{ l.url }}">{{ l.label }}</a>{% endfor %}
+        </p>
         {% endif %}
       </li>
       {% endfor %}

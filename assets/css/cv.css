@@ -39,6 +39,10 @@
 }
 .cv__masthead h1 { padding-top: 0; border-top: 0; margin-top: 0; }
 
+/* The masthead already draws a rule; don't stack a second one on the
+   first markdown heading that follows it. */
+.cv__masthead + h1 { border-top: 0; padding-top: 0; margin-top: 22px; }
+
 .cv ul { margin: 0; padding-left: 19px; color: var(--text-soft); }
 .cv > ul > li { margin-bottom: 9px; }
 .cv ul ul { margin-top: 4px; padding-left: 18px; }

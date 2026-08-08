@@ -5,10 +5,7 @@
   period: "2025"
   summary: 'Assembling top–bottom outfit pairs from a natural-language style prompt, framed as sequential decision-making rather than one-shot retrieval.'
   details:
-    - "Tamed a 25M-combination action space with balanced K-means over CLIP embeddings — 5,000 tops and 5,000 bottoms from DressCode into 50 clusters of 100 items each — letting a model-free PPO agent pick a cluster first, then an item within it."
-    - "Rewarded the agent with a multimodal signal: CLIP text–image similarity fused with a lightweight MLP proxy for human preference, trained on 2,500 CatVTON virtual try-on examples."
-    - "Pre-training on the CLIP reward before fine-tuning on the human-feedback proxy started ~43% lower in loss and reached the threshold in ~8% fewer steps."
-    - "Lifted CLIP-T text alignment from 0.833 (untrained baseline) to 0.924, converging in under four hours on an A100."
+    - "A model-free PPO agent picks a style cluster and then an item within it, rewarded by CLIP text–image similarity fused with a learned proxy for human preference."
     - "Began as a Reinforcement Learning course project; published at ICTC 2025."
   links:
     - label: "PDF"

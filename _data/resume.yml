@@ -34,15 +34,11 @@
 - name: "Project Experience"
   entries:
     - title: "WardrobeRL: Prompt-Aware Reinforcement Learning Based Top-Bottom Recommendation"
-      subtitle: "Team Member, Second Author — Reinforcement Learning course project, published at ICTC 2025"
+      subtitle: "Reinforcement Learning course project, published at ICTC 2025"
       location: "Daegu, S.Korea"
       period: "2025"
       bullets:
-        - "Framed prompt-conditioned outfit recommendation as sequential decision-making rather than one-shot retrieval."
-        - "Reduced a 25M-combination action space with balanced K-means over CLIP embeddings — 5,000 tops and 5,000 bottoms from DressCode into 50 clusters of 100 items each — letting a model-free PPO agent select a cluster, then an item."
-        - "Designed a multimodal reward fusing CLIP text-image similarity with a lightweight MLP proxy for human preference, trained on 2,500 CatVTON virtual try-on examples."
-        - "Pre-training on the CLIP reward before fine-tuning on the human-feedback proxy started ~43% lower in loss and reached the threshold in ~8% fewer steps."
-        - "Lifted CLIP-T text alignment from 0.833 to 0.924 over the untrained baseline, converging in under four hours on an A100."
+        - "A model-free PPO framework that assembles top-bottom outfit pairs from a natural-language style prompt, rewarded by CLIP similarity fused with a learned proxy for human preference."
 
     - title: "Noise Map-Driven Dynamic Frame Processing for Improved Object Detection in Low-Light Conditions"
       subtitle: "Undergraduate Group Research Program (UGRP), Team of Four"

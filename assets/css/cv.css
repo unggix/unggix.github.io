@@ -156,7 +156,7 @@ a:hover { text-decoration: underline; }
 /* ---------- print ---------- */
 
 @media print {
-  @page { size: A4; margin: 14mm 15mm; }
+  @page { size: A4; margin: 12mm 15mm; }
 
   body { background: #fff; font-size: 10pt; }
   .no-print { display: none !important; }
@@ -170,7 +170,8 @@ a:hover { text-decoration: underline; }
 
   a { color: var(--accent) !important; }
 
-  .sec { margin-top: 13px; }
+  .sec { margin-top: 11px; }
+  .entry { margin-bottom: 8px; }
   .sec__title { break-after: avoid; }
   .entry { break-inside: avoid; }
 }

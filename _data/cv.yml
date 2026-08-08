@@ -1,0 +1,77 @@
+# CV content. Drives both /cv/ and the generated PDF.
+#
+# Each section renders its heading with the first three letters accented.
+# Entry shape: title / subtitle / location / period / bullets
+# Set `type: skills` for a label-value block instead, or `type: publications`
+# to pull from the _publications collection.
+
+- name: "Education"
+  entries:
+    - title: "Daegu Gyeongbuk Institute of Science and Technology (DGIST)"
+      subtitle: "M.S. in Computer Science"
+      location: "Daegu, S.Korea"
+      period: "Feb. 2026 - Feb. 2028 (Expected)"
+      bullets:
+        - "Real-Time Computing Lab (RTCL)"
+
+    - title: "Daegu Gyeongbuk Institute of Science and Technology (DGIST)"
+      subtitle: "B.S. in Electrical Engineering and Computer Science"
+      location: "Daegu, S.Korea"
+      period: "Feb. 2020 - Feb. 2026"
+      bullets:
+        - "Total GPA of 3.82 / 4.30"
+
+- name: "Research Experience"
+  entries:
+    - title: "Real-Time Computing Lab (RTCL), DGIST"
+      subtitle: "Graduate Research Assistant"
+      location: "Daegu, S.Korea"
+      period: "Feb. 2026 - Present"
+      bullets:
+        - "Real-time systems, with a focus on DNN inference offloading between edge devices and servers under latency constraints."
+        - "Image-adaptive JPEG compression: per-image quality factor and quantization table optimization, so that offloaded inference holds up under variable network bandwidth."
+
+- name: "Project Experience"
+  entries:
+    - title: "WardrobeRL: Prompt-Aware Reinforcement Learning Based Top-Bottom Recommendation"
+      subtitle: "Team Member, Second Author"
+      location: "Daegu, S.Korea"
+      period: "2025"
+      bullets:
+        - "Framed prompt-conditioned outfit recommendation as sequential decision-making rather than one-shot retrieval."
+        - "Reduced a 25M-combination action space with balanced K-means over CLIP embeddings — 5,000 tops and 5,000 bottoms from DressCode into 50 clusters of 100 items each — letting a model-free PPO agent select a cluster, then an item."
+        - "Designed a multimodal reward fusing CLIP text-image similarity with a lightweight MLP proxy for human preference, trained on 2,500 CatVTON virtual try-on examples."
+        - "Pre-training on the CLIP reward before fine-tuning on the human-feedback proxy started ~43% lower in loss and reached the threshold in ~8% fewer steps."
+        - "Lifted CLIP-T text alignment from 0.833 to 0.924 over the untrained baseline, converging in under four hours on an A100."
+        - "Began as a Reinforcement Learning course project; published at ICTC 2025."
+
+    - title: "Noise Map-Driven Dynamic Frame Processing for Improved Object Detection in Low-Light Conditions"
+      subtitle: "Undergraduate Group Research Program (UGRP), Team of Four"
+      location: "Daegu, S.Korea"
+      period: "2024"
+      bullets:
+        - "Placed an enhancement front-end before YOLO — Zero-DCE for low-light enhancement, CBDNet for noise-map estimation, and MFDNet for denoising — integrated directly into the detector's data loader."
+        - "Held the pipeline to real time by exploiting temporal redundancy between frames, processing one frame in five at 20 FPS."
+        - "Improved mAP by roughly 1% over the unenhanced baseline on BDD100k."
+
+- name: "Publications"
+  type: "publications"
+
+- name: "International Experience"
+  entries:
+    - title: "University of California, Los Angeles (UCLA)"
+      subtitle: "Summer Session"
+      location: "Los Angeles, CA, USA"
+      period: "Jun. - Aug. 2023"
+
+- name: "Skills"
+  type: "skills"
+  skills:
+    - label: "Programming"
+      value: "C, C++, Python"
+    - label: "Deep Learning"
+      value: "PyTorch"
+    - label: "Computer Vision"
+      value: "OpenCV"
+    - label: "Tools"
+      value: "Docker, Linux, Git"

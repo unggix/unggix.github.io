@@ -9,70 +9,90 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400..600;1,8..60,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/homepage.css">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/cv.css">
-
-  <script>
-    (function () {
-      var saved = null;
-      try { saved = localStorage.getItem('theme'); } catch (e) {}
-      var dark = saved ? saved === 'dark'
-                       : window.matchMedia('(prefers-color-scheme: dark)').matches;
-      if (dark) document.documentElement.setAttribute('data-theme', 'dark');
-    })();
-  </script>
 </head>
-<body class="cv-page">
+<body>
 
-<header class="nav no-print">
-  <div class="nav__inner">
-    <nav class="nav__links">
-      <a href="/">&larr; Home</a>
-    </nav>
-    <a class="nav__theme" href="/files/{{ site.author.name | replace: ' ', '_' }}_CV.pdf">Download PDF</a>
-  </div>
-</header>
+<div class="bar no-print">
+  <a href="/">&larr; Home</a>
+  <a href="/files/{{ site.author.name | replace: ' ', '_' }}_CV.pdf">Download PDF</a>
+</div>
 
-<main class="wrap cv">
+<main class="sheet">
 
-  <header class="cv__masthead">
-    <h1>{{ site.author.name }}</h1>
-    <p class="cv__contact">
-      {{ site.author.employer }} · {{ site.author.location }}<br>
-      <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
-      <span class="sep">/</span><a href="{{ site.url }}">{{ site.url | remove: "https://" }}</a>
-      {% if site.author.googlescholar %}<span class="sep">/</span><a href="{{ site.author.googlescholar }}">Google Scholar</a>{% endif %}
-    </p>
+  <header class="head">
+    <img class="head__photo" src="/images/{{ site.author.avatar }}" alt="{{ site.author.name }}">
+    <div class="head__body">
+      {% assign parts = site.author.name | split: " " %}
+      <h1 class="head__name">
+        <span class="head__given">{{ parts[0] }}</span>&nbsp;<span class="head__family">{{ parts[1] }}</span>
+      </h1>
+      <p class="head__contact">
+        <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
+        <span class="pipe">|</span><a href="{{ site.url }}">{{ site.url | remove: "https://" }}</a>
+        <span class="pipe">|</span><a href="https://github.com/{{ site.author.github }}">github.com/{{ site.author.github }}</a>
+        <span class="pipe">|</span><a href="{{ site.author.googlescholar }}">Google Scholar</a>
+      </p>
+      <p class="head__tag">Real-time systems &middot; DNN inference offloading &middot; Image-adaptive compression</p>
+    </div>
   </header>
 
-  {{ content }}
+  {% for sec in site.data.cv %}
+  <section class="sec">
+    <h2 class="sec__title">
+      <span class="sec__lead">{{ sec.name | slice: 0, 3 }}</span>{{ sec.name | slice: 3, 60 }}
+      <span class="sec__rule"></span>
+    </h2>
 
-  <section>
-    <h2>Publications</h2>
-    <ol class="pubs">
-      {% for post in site.publications reversed %}
-      <li class="pub">
-        <div class="pub__title">
-          {% if post.paperurl %}<a href="{{ post.paperurl }}">{{ post.title }}</a>{% else %}{{ post.title }}{% endif %}
-        </div>
-        {% if post.authors %}
-        {% capture me %}<span class="me">{{ site.author.name }}</span>{% endcapture %}
-        <div class="pub__authors">{{ post.authors | replace: site.author.name, me }}</div>
-        {% endif %}
-        <div class="pub__venue">
-          <em>{{ post.venue }}</em>{% if post.date %}, {{ post.date | date: "%B %Y" }}{% endif %}
-        </div>
-      </li>
+    {% if sec.type == "skills" %}
+    <table class="skills">
+      {% for s in sec.skills %}
+      <tr><th>{{ s.label }}</th><td>{{ s.value }}</td></tr>
       {% endfor %}
-    </ol>
+    </table>
+
+    {% elsif sec.type == "publications" %}
+    {% for post in site.publications reversed %}
+    <article class="entry">
+      <div class="entry__row">
+        <div class="entry__title">{{ post.title }}</div>
+        <div class="entry__loc">{{ post.venueshort | default: post.venue }}</div>
+      </div>
+      <div class="entry__row">
+        {% capture me %}<span class="me">{{ site.author.name }}</span>{% endcapture %}
+        <div class="entry__sub">{{ post.authors | replace: site.author.name, me }}</div>
+        <div class="entry__date">{{ post.date | date: "%b. %Y" }}</div>
+      </div>
+      <ul class="entry__bullets">
+        <li>{{ post.venue }}{% if post.paperurl %} &mdash; <a href="{{ post.paperurl }}">PDF</a>{% endif %}{% if post.ieeeurl %} / <a href="{{ post.ieeeurl }}">IEEE Xplore</a>{% endif %}</li>
+      </ul>
+    </article>
+    {% endfor %}
+
+    {% else %}
+    {% for e in sec.entries %}
+    <article class="entry">
+      <div class="entry__row">
+        <div class="entry__title">{{ e.title }}</div>
+        <div class="entry__loc">{{ e.location }}</div>
+      </div>
+      <div class="entry__row">
+        <div class="entry__sub">{{ e.subtitle }}</div>
+        <div class="entry__date">{{ e.period }}</div>
+      </div>
+      {% if e.bullets %}
+      <ul class="entry__bullets">
+        {% for b in e.bullets %}<li>{{ b }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+    </article>
+    {% endfor %}
+    {% endif %}
   </section>
+  {% endfor %}
 
 </main>
-
-<footer class="foot no-print">
-  <p>Last updated {{ site.time | date: "%B %Y" }}.</p>
-</footer>
 
 </body>
 </html>

@@ -1,95 +1,212 @@
-/* CV page. Layers on top of homepage.css; the @media print block is what
-   headless Chrome renders when generating files/Unggi_Lee_CV.pdf. */
+/* CV sheet. Laid out for A4 print first; the on-screen page is the same
+   sheet on a grey desk. Generated to files/Unggi_Lee_CV.pdf by headless
+   Chrome, so @media print is the authoritative rendering. */
 
-.cv { padding-bottom: 44px; }
-
-/* No border here: every section rule is drawn by the h1 border-top below,
-   so the masthead adding its own would stack two lines. */
-.cv__masthead { padding: 48px 0 4px; }
-
-.cv__masthead h1 {
-  font-family: var(--serif);
-  font-size: 1.94rem;
-  font-weight: 600;
-  letter-spacing: -0.008em;
-  margin: 0 0 9px;
+:root {
+  --ink:      #1b1b1b;
+  --muted:    #4a4a4a;
+  --dim:      #7a7a7a;
+  --accent:   #c0392b;
+  --link:     #2f5d9e;
+  --rule:     #9a9a9a;
+  --sans:     "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
 }
 
-.cv__contact {
+* { box-sizing: border-box; }
+
+body {
   margin: 0;
-  color: var(--text-soft);
-  font-size: 0.92rem;
-  line-height: 1.6;
+  background: #6f6f72;
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 10.6pt;
+  line-height: 1.45;
+  -webkit-font-smoothing: antialiased;
 }
-.cv__contact .sep { color: var(--text-dim); margin: 0 7px; }
 
-.cv section { padding: 26px 0; border-bottom: 1px solid var(--rule); }
-.cv section:last-child { border-bottom: 0; }
+a { color: var(--link); text-decoration: none; }
+a:hover { text-decoration: underline; }
 
-/* Markdown body of _pages/cv.md: "Heading\n======" becomes <h1>. */
-.cv h1:not(.cv__masthead h1) {
-  font-family: var(--serif);
-  font-size: 1.28rem;
-  font-weight: 600;
-  margin: 30px 0 14px;
-  padding-top: 26px;
-  border-top: 1px solid var(--rule);
+.bar {
+  max-width: 210mm;
+  margin: 0 auto;
+  padding: 14px 4mm;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
 }
-.cv__masthead h1 { padding-top: 0; border-top: 0; margin-top: 0; }
+.bar a { color: #fff; }
 
-.cv ul { margin: 0; padding-left: 19px; color: var(--text-soft); }
-.cv > ul > li { margin-bottom: 9px; }
-.cv ul ul { margin-top: 4px; padding-left: 18px; }
-.cv li::marker { color: var(--text-dim); }
+.sheet {
+  max-width: 210mm;
+  margin: 0 auto 40px;
+  padding: 14mm 13mm;
+  background: #fff;
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.3);
+}
 
-.cv .pubs { color: var(--text-soft); }
+/* ---------- masthead ---------- */
 
-.nav__theme { text-decoration: none; }
+.head {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 6px;
+}
+
+.head__photo {
+  flex: none;
+  width: 92px;
+  height: 92px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 12%;
+  border: 1px solid #d0d0d0;
+  background: #f2f2f2;
+}
+
+.head__body { min-width: 0; flex: 1; text-align: center; }
+
+.head__name {
+  margin: 0 0 5px;
+  font-size: 27pt;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+.head__given  { font-weight: 300; color: var(--dim); }
+.head__family { font-weight: 900; color: var(--ink); }
+
+.head__contact {
+  margin: 0 0 4px;
+  font-size: 8.6pt;
+  color: var(--muted);
+}
+.head__contact .pipe { color: #bbb; margin: 0 7px; }
+
+.head__tag {
+  margin: 0;
+  font-size: 8.8pt;
+  font-style: italic;
+  color: var(--dim);
+}
+
+/* ---------- sections ---------- */
+
+.sec { margin-top: 13px; }
+
+.sec__title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 7px;
+  font-size: 14.5pt;
+  font-weight: 700;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+.sec__lead { color: var(--accent); }
+.sec__rule {
+  flex: 1;
+  height: 1px;
+  background: var(--rule);
+}
+
+/* ---------- entries ---------- */
+
+.entry { margin-bottom: 9px; }
+.entry:last-child { margin-bottom: 0; }
+
+.entry__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.entry__title {
+  font-weight: 700;
+  font-size: 10.8pt;
+  line-height: 1.3;
+}
+
+.entry__sub {
+  font-size: 8.6pt;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.entry__sub .me { color: var(--ink); }
+
+.entry__loc,
+.entry__date {
+  flex: none;
+  font-style: italic;
+  font-size: 8.8pt;
+  white-space: nowrap;
+  text-align: right;
+}
+.entry__loc  { color: var(--accent); }
+.entry__date { color: var(--dim); }
+
+.entry__bullets {
+  margin: 3px 0 0;
+  padding-left: 15px;
+}
+.entry__bullets li {
+  margin-bottom: 1.5px;
+  font-size: 9.6pt;
+  color: var(--muted);
+  line-height: 1.4;
+}
+.entry__bullets li::marker { color: var(--accent); }
+
+/* ---------- skills ---------- */
+
+.skills { border-collapse: collapse; }
+.skills th {
+  text-align: left;
+  vertical-align: top;
+  padding: 1px 18px 1px 0;
+  font-size: 9.8pt;
+  font-weight: 700;
+  white-space: nowrap;
+}
+.skills td {
+  padding: 1px 0;
+  font-size: 9.8pt;
+  color: var(--muted);
+}
 
 /* ---------- print ---------- */
 
 @media print {
-  @page { size: A4; margin: 16mm 15mm; }
+  @page { size: A4; margin: 11mm 12mm; }
 
-  html, body {
-    background: #fff !important;
-    color: #000 !important;
-    font-size: 10.4pt;
-    line-height: 1.5;
+  body { background: #fff; font-size: 10.2pt; }
+  .no-print { display: none !important; }
+
+  .sheet {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
   }
 
-  /* Force the light palette regardless of the reader's theme. */
-  :root, [data-theme="dark"] {
-    --bg: #fff;
-    --text: #000;
-    --text-soft: #1c1c1c;
-    --text-dim: #555;
-    --link: #000;
-    --rule: #bbb;
-  }
+  a { color: var(--link) !important; }
 
-  .no-print, .nav, .foot { display: none !important; }
+  .sec { break-inside: auto; margin-top: 11px; }
+  .sec__title { break-after: avoid; }
+  .entry { break-inside: avoid; }
+}
 
-  .wrap { max-width: none; padding: 0; }
+/* ---------- small screens ---------- */
 
-  .cv { padding-bottom: 0; }
-  .cv__masthead { padding: 0 0 8px; }
-  .cv__masthead h1 { font-size: 19pt; margin-bottom: 6px; }
-  .cv__contact { font-size: 8.8pt; }
-
-  .cv section { padding: 8px 0; }
-  .cv h1:not(.cv__masthead h1) {
-    font-size: 12pt;
-    margin: 10px 0 6px;
-    padding-top: 9px;
-  }
-  .cv > ul > li { margin-bottom: 5px; }
-  .cv ul ul { margin-top: 2px; }
-  .pub { padding-bottom: 0; }
-
-  a { color: #000 !important; text-decoration: none; }
-
-  /* Keep entries from splitting across pages. */
-  .cv > ul > li, .pub, .exp__item { break-inside: avoid; }
-  h1, h2 { break-after: avoid; }
+@media (max-width: 620px) {
+  .sheet { padding: 8mm 6mm; }
+  .head { flex-direction: column; text-align: center; gap: 12px; }
+  .head__name { font-size: 22pt; }
+  .head__contact .pipe { margin: 0 4px; }
+  .entry__row { flex-direction: column; gap: 0; }
+  .entry__loc, .entry__date { text-align: left; }
 }

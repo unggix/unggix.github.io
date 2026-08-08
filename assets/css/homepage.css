@@ -213,6 +213,9 @@ p { margin: 0 0 15px; }
 
 .pub__venue { font-size: 0.92rem; color: var(--text-dim); }
 
+.pub__links { margin: 6px 0 0; font-size: 0.9rem; }
+.pub__links .sep { color: var(--text-dim); margin: 0 6px; }
+
 /* ---------- experience ---------- */
 
 .exp { list-style: none; margin: 0; padding: 0; }

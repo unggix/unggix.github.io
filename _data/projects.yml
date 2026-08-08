@@ -3,10 +3,16 @@
 
 - name: "WardrobeRL"
   period: "2025"
-  summary: 'Prompt-aware reinforcement learning for recommending top–bottom outfit pairs.'
+  summary: 'Assembling top–bottom outfit pairs from a natural-language style prompt, framed as sequential decision-making rather than one-shot retrieval.'
   details:
-    - "Course project for Reinforcement Learning, later published at ICTC 2025."
+    - "Tamed a 25M-combination action space with balanced K-means over CLIP embeddings — 5,000 tops and 5,000 bottoms from DressCode into 50 clusters of 100 items each — letting a model-free PPO agent pick a cluster first, then an item within it."
+    - "Rewarded the agent with a multimodal signal: CLIP text–image similarity fused with a lightweight MLP proxy for human preference, trained on 2,500 CatVTON virtual try-on examples."
+    - "Pre-training on the CLIP reward before fine-tuning on the human-feedback proxy started ~43% lower in loss and reached the threshold in ~8% fewer steps."
+    - "Lifted CLIP-T text alignment from 0.833 (untrained baseline) to 0.924, converging in under four hours on an A100."
+    - "Began as a Reinforcement Learning course project; published at ICTC 2025."
   links:
+    - label: "PDF"
+      url: "https://d2j16w31g89z0j.cloudfront.net/site/ictc2025/abs/P09-3.pdf"
     - label: "IEEE Xplore"
       url: "https://ieeexplore.ieee.org/document/11388251"
 

@@ -100,6 +100,13 @@
         <div class="pub__venue">
           <em>{{ post.venueshort | default: post.venue }}</em>{% if post.date %}, {{ post.date | date: "%B %Y" }}{% endif %}
         </div>
+        {% if post.paperurl or post.ieeeurl %}
+        <p class="pub__links">
+          {% if post.paperurl %}<a href="{{ post.paperurl }}">PDF</a>{% endif %}
+          {% if post.paperurl and post.ieeeurl %}<span class="sep">/</span>{% endif %}
+          {% if post.ieeeurl %}<a href="{{ post.ieeeurl }}">IEEE Xplore</a>{% endif %}
+        </p>
+        {% endif %}
       </li>
       {% endfor %}
     </ol>

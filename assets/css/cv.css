@@ -51,13 +51,13 @@ a:hover { text-decoration: underline; }
   display: flex;
   align-items: center;
   gap: 16px;
-  padding-bottom: 6px;
+  padding-bottom: 2px;
 }
 
 .head__photo {
   flex: none;
-  width: 92px;
-  height: 92px;
+  width: 86px;
+  height: 86px;
   border-radius: 50%;
   object-fit: cover;
   object-position: center 12%;
@@ -92,7 +92,7 @@ a:hover { text-decoration: underline; }
 
 /* ---------- sections ---------- */
 
-.sec { margin-top: 10px; }
+.sec { margin-top: 9px; }
 
 .sec__title {
   display: flex;
@@ -157,7 +157,7 @@ a:hover { text-decoration: underline; }
   padding-left: 15px;
 }
 .entry__bullets li {
-  margin-bottom: 1.5px;
+  margin-bottom: 1px;
   font-size: 9.6pt;
   color: var(--muted);
   line-height: 1.4;
@@ -166,7 +166,7 @@ a:hover { text-decoration: underline; }
 
 /* ---------- skills ---------- */
 
-.skills { border-collapse: collapse; }
+.skills { border-collapse: collapse; break-inside: avoid; }
 .skills th {
   text-align: left;
   vertical-align: top;
@@ -198,7 +198,7 @@ a:hover { text-decoration: underline; }
 
   a { color: var(--link) !important; }
 
-  .sec { break-inside: auto; margin-top: 11px; }
+  .sec { break-inside: auto; margin-top: 8px; }
   .sec__title { break-after: avoid; }
   .entry { break-inside: avoid; }
 }

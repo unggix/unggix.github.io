@@ -203,3 +203,5 @@ a:hover { text-decoration: underline; }
   .entry__row { flex-direction: column; gap: 0; }
   .entry__date, .entry__loc { text-align: left; }
 }
+
+.bar span { display: flex; gap: 18px; }

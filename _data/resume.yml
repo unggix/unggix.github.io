@@ -21,6 +21,11 @@
       bullets:
         - "Total GPA of 3.82 / 4.30"
 
+- name: "Research Interests"
+  only: "academic"
+  type: "text"
+  text: "Real-time systems; DNN inference offloading between edge devices and servers; image-adaptive compression under bandwidth variation; the trade-off between data fidelity, transmission cost, and end-to-end deadlines."
+
 - name: "Research Experience"
   entries:
     - title: "Real-Time Computing Lab (RTCL), DGIST"
@@ -30,6 +35,9 @@
       bullets:
         - "Real-time systems, with a focus on DNN inference offloading between edge devices and servers under latency constraints."
         - "Image-adaptive JPEG compression: per-image quality factor and quantization table optimization, so that offloaded inference holds up under variable network bandwidth."
+
+- name: "Publications"
+  type: "publications"
 
 - name: "Project Experience"
   entries:
@@ -48,9 +56,6 @@
         - "Placed an enhancement front-end before YOLO — Zero-DCE for low-light enhancement, CBDNet for noise-map estimation, and MFDNet for denoising — integrated directly into the detector's data loader."
         - "Held the pipeline to real time by exploiting temporal redundancy between frames, processing one frame in five at 20 FPS."
         - "Improved mAP by roughly 1% over the unenhanced baseline on BDD100k."
-
-- name: "Publications"
-  type: "publications"
 
 - name: "International Experience"
   entries:

@@ -16,7 +16,10 @@
 
 <div class="bar no-print">
   <a href="/">&larr; Home</a>
-  <a href="/files/{{ site.author.name | replace: ' ', '_' }}_CV.pdf">Download PDF</a>
+  <span>
+    <a href="/cv/academic/">Academic CV</a>
+    <a href="/files/{{ site.author.name | replace: ' ', '_' }}_CV.pdf">Download PDF</a>
+  </span>
 </div>
 
 <main class="sheet">
@@ -41,6 +44,7 @@
     with academicpages and silently won the name collision.
   {% endcomment %}
   {% for sec in site.data.resume %}
+  {% if sec.only and sec.only != "short" %}{% continue %}{% endif %}
   <section class="sec">
     <h2 class="sec__title">{{ sec.name }}</h2>
 

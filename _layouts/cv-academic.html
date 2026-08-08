@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Academic CV — {{ site.author.name }}</title>
+  <meta name="description" content="Academic curriculum vitae of {{ site.author.name }}">
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <link rel="stylesheet" href="/assets/css/cv-academic.css">
+</head>
+<body>
+
+<div class="bar no-print">
+  <a href="/cv/">&larr; Short CV</a>
+  <a href="/files/{{ site.author.name | replace: ' ', '_' }}_Academic_CV.pdf">Download PDF</a>
+</div>
+
+<main class="sheet">
+
+  <header class="head">
+    <h1 class="head__name">{{ site.author.name }}</h1>
+    <p class="head__contact">
+      {{ site.author.location }}
+      <span class="pipe">|</span>{{ site.author.email }}
+      <span class="pipe">|</span>{{ site.url | remove: "https://" }}
+      <span class="pipe">|</span>github.com/{{ site.author.github }}
+    </p>
+  </header>
+
+  {% comment %}
+    Sections marked `only: academic` appear here and are skipped by the short
+    CV; both documents read the same _data/resume.yml.
+  {% endcomment %}
+  {% for sec in site.data.resume %}
+  {% if sec.only and sec.only != "academic" %}{% continue %}{% endif %}
+  <section class="sec">
+    <h2 class="sec__title">{{ sec.name | upcase }}</h2>
+
+    {% if sec.type == "text" %}
+    <p class="text">{{ sec.text }}</p>
+
+    {% elsif sec.type == "skills" %}
+    <table class="skills">
+      {% for s in sec.skills %}
+      <tr><th>{{ s.label }}:</th><td>{{ s.value }}</td></tr>
+      {% endfor %}
+    </table>
+
+    {% elsif sec.type == "publications" %}
+    <ol class="pubs">
+      {% for post in site.publications reversed %}
+      <li>
+        {% capture me %}<span class="me">{{ site.author.name }}</span>{% endcapture %}
+        {{ post.authors | replace: site.author.name, me }}.
+        &ldquo;{{ post.title }}.&rdquo;
+        <em>{{ post.venue }}</em>{% if post.pages %}, pp. {{ post.pages }}{% endif %}, {{ post.date | date: "%B %Y" }}.
+        {% if post.doi %}doi:{{ post.doi }}.{% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+
+    {% else %}
+    {% for e in sec.entries %}
+    <article class="entry">
+      <div class="entry__row">
+        <div class="entry__title">{{ e.title }}</div>
+        <div class="entry__side">{{ e.location }}</div>
+      </div>
+      <div class="entry__row">
+        <div class="entry__sub">{{ e.subtitle }}</div>
+        <div class="entry__side">{{ e.period }}</div>
+      </div>
+      {% if e.bullets %}
+      <ul class="entry__bullets">
+        {% for b in e.bullets %}<li>{{ b }}</li>{% endfor %}
+      </ul>
+      {% endif %}
+    </article>
+    {% endfor %}
+    {% endif %}
+  </section>
+  {% endfor %}
+
+  <section class="sec">
+    <h2 class="sec__title">CONFERENCE PRESENTATIONS</h2>
+    <ul class="plain">
+      {% for post in site.publications reversed %}
+      <li>&ldquo;{{ post.title }}.&rdquo; <em>{{ post.venue }}</em>, {{ post.date | date: "%B %Y" }}.</li>
+      {% endfor %}
+    </ul>
+  </section>
+
+</main>
+
+</body>
+</html>

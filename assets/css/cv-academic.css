@@ -1,0 +1,159 @@
+/* Academic CV, in the traditional US university format: centred name,
+   all-caps section headings ruled underneath, two columns for institution
+   and place/date, and no colour or portrait at all.
+
+   Print is the authoritative rendering — headless Chrome writes
+   files/Unggi_Lee_Academic_CV.pdf from @media print. */
+
+:root {
+  --ink:   #000;
+  --body:  #1a1a1a;
+  --sans:  "Calibri", "Carlito", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #6f6f72;
+  color: var(--body);
+  font-family: var(--sans);
+  font-size: 11pt;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.bar {
+  max-width: 210mm;
+  margin: 0 auto;
+  padding: 14px 4mm;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+}
+.bar a { color: #fff; }
+
+.sheet {
+  max-width: 210mm;
+  margin: 0 auto 40px;
+  padding: 18mm 18mm;
+  background: #fff;
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.3);
+}
+
+/* ---------- masthead ---------- */
+
+.head {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.head__name {
+  margin: 0 0 3px;
+  font-size: 13.5pt;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.head__contact {
+  margin: 0;
+  font-size: 10.5pt;
+}
+.head__contact .pipe { margin: 0 5px; }
+
+/* ---------- sections ---------- */
+
+.sec { margin-bottom: 14px; }
+
+.sec__title {
+  margin: 0 0 5px;
+  padding-bottom: 1px;
+  border-bottom: 1.6px solid var(--ink);
+  font-size: 11pt;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+}
+
+/* ---------- entries ---------- */
+
+.entry { margin-bottom: 11px; }
+.entry:last-child { margin-bottom: 0; }
+
+.entry__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 18px;
+}
+
+.entry__title { font-weight: 600; font-size: 11pt; line-height: 1.35; }
+.entry__sub { font-style: italic; font-size: 11pt; }
+
+.entry__side {
+  flex: none;
+  font-size: 11pt;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.entry__bullets {
+  margin: 2px 0 0;
+  padding-left: 18px;
+}
+.entry__bullets li {
+  margin-bottom: 1px;
+  line-height: 1.4;
+}
+
+/* ---------- text, publications, skills ---------- */
+
+.text { margin: 0; }
+
+.pubs { margin: 0; padding-left: 20px; }
+.pubs li { margin-bottom: 5px; }
+.pubs .me { font-weight: 600; }
+
+.plain { margin: 0; padding-left: 20px; list-style: none; }
+.plain li { margin-bottom: 3px; text-indent: -20px; padding-left: 20px; }
+
+.skills { border-collapse: collapse; break-inside: avoid; }
+.skills th {
+  text-align: left;
+  vertical-align: top;
+  padding: 0 8px 1px 0;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.skills td { padding: 0 0 1px; }
+
+/* ---------- print ---------- */
+
+@media print {
+  @page { size: A4; margin: 18mm 18mm; }
+
+  body { background: #fff; font-size: 10.6pt; }
+  .no-print { display: none !important; }
+
+  .sheet {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  .sec__title { break-after: avoid; }
+  .entry { break-inside: avoid; }
+}
+
+/* ---------- small screens ---------- */
+
+@media (max-width: 620px) {
+  .sheet { padding: 9mm 7mm; }
+  .entry__row { flex-direction: column; gap: 0; }
+  .entry__side { text-align: left; }
+}

@@ -92,18 +92,21 @@ a:hover { text-decoration: underline; }
 
 /* ---------- sections ---------- */
 
-.sec { margin-top: 13px; }
+.sec { margin-top: 10px; }
 
 .sec__title {
   display: flex;
   align-items: center;
   gap: 9px;
-  margin: 0 0 7px;
-  font-size: 14.5pt;
+  margin: 0 0 6px;
+  font-size: 14pt;
   font-weight: 700;
   line-height: 1.1;
   white-space: nowrap;
 }
+/* The name is one inline run — splitting it across flex items would open a
+   gap between the accented letters and the rest of the word. */
+.sec__text { flex: none; }
 .sec__lead { color: var(--accent); }
 .sec__rule {
   flex: 1;
@@ -113,7 +116,7 @@ a:hover { text-decoration: underline; }
 
 /* ---------- entries ---------- */
 
-.entry { margin-bottom: 9px; }
+.entry { margin-bottom: 7px; }
 .entry:last-child { margin-bottom: 0; }
 
 .entry__row {
@@ -181,9 +184,9 @@ a:hover { text-decoration: underline; }
 /* ---------- print ---------- */
 
 @media print {
-  @page { size: A4; margin: 11mm 12mm; }
+  @page { size: A4; margin: 10mm 12mm; }
 
-  body { background: #fff; font-size: 10.2pt; }
+  body { background: #fff; font-size: 10pt; }
   .no-print { display: none !important; }
 
   .sheet {

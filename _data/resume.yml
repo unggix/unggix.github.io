@@ -34,7 +34,7 @@
 - name: "Project Experience"
   entries:
     - title: "WardrobeRL: Prompt-Aware Reinforcement Learning Based Top-Bottom Recommendation"
-      subtitle: "Team Member, Second Author"
+      subtitle: "Team Member, Second Author — Reinforcement Learning course project, published at ICTC 2025"
       location: "Daegu, S.Korea"
       period: "2025"
       bullets:
@@ -43,7 +43,6 @@
         - "Designed a multimodal reward fusing CLIP text-image similarity with a lightweight MLP proxy for human preference, trained on 2,500 CatVTON virtual try-on examples."
         - "Pre-training on the CLIP reward before fine-tuning on the human-feedback proxy started ~43% lower in loss and reached the threshold in ~8% fewer steps."
         - "Lifted CLIP-T text alignment from 0.833 to 0.924 over the untrained baseline, converging in under four hours on an A100."
-        - "Began as a Reinforcement Learning course project; published at ICTC 2025."
 
     - title: "Noise Map-Driven Dynamic Frame Processing for Improved Object Detection in Low-Light Conditions"
       subtitle: "Undergraduate Group Research Program (UGRP), Team of Four"

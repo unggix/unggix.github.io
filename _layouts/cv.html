@@ -22,15 +22,18 @@
 <main class="sheet">
 
   <header class="head">
-    <h1 class="head__name">{{ site.author.name }}</h1>
-    <p class="head__tag">Real-time systems &middot; DNN inference offloading &middot; Image-adaptive compression</p>
-    <p class="head__contact">
-      <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
-      <span class="pipe">|</span><a href="{{ site.url }}">{{ site.url | remove: "https://" }}</a>
-      <span class="pipe">|</span><a href="https://github.com/{{ site.author.github }}">github.com/{{ site.author.github }}</a>
-      <span class="pipe">|</span><a href="{{ site.author.googlescholar }}">Google Scholar</a>
-      <span class="pipe">|</span>{{ site.author.location }}
-    </p>
+    <img class="head__photo" src="/images/{{ site.author.avatar }}" alt="{{ site.author.name }}">
+    <div class="head__body">
+      <h1 class="head__name">{{ site.author.name }}</h1>
+      <p class="head__tag">Real-time systems &middot; DNN inference offloading &middot; Image-adaptive compression</p>
+      <p class="head__contact">
+        <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
+        <span class="pipe">|</span><a href="{{ site.url }}">{{ site.url | remove: "https://" }}</a>
+        <span class="pipe">|</span><a href="https://github.com/{{ site.author.github }}">github.com/{{ site.author.github }}</a>
+        <span class="pipe">|</span><a href="{{ site.author.googlescholar }}">Google Scholar</a>
+        <span class="pipe">|</span>{{ site.author.location }}
+      </p>
+    </div>
   </header>
 
   {% comment %}

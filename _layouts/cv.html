@@ -38,7 +38,11 @@
     </div>
   </header>
 
-  {% for sec in site.data.cv %}
+  {% comment %}
+    Data lives at site.data.resume, not site.data.cv: _data/cv.json shipped
+    with academicpages and silently won the name collision.
+  {% endcomment %}
+  {% for sec in site.data.resume %}
   <section class="sec">
     <h2 class="sec__title">
       <span class="sec__lead">{{ sec.name | slice: 0, 3 }}</span>{{ sec.name | slice: 3, 60 }}

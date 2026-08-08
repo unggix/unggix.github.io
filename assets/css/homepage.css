@@ -8,6 +8,7 @@
   --text-dim:  #8a8a95;
   --link:      #35507d;
   --rule:      #e4e4e2;
+  --photo-bg:  #f0f0ed;
 
   --serif: "Source Serif 4", Iowan Old Style, Charter, Georgia, serif;
   --sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -20,6 +21,7 @@
   --text-dim:  #777780;
   --link:      #8fa9d6;
   --rule:      #2a2a31;
+  --photo-bg:  #23232b;
 }
 
 * { box-sizing: border-box; }
@@ -126,14 +128,16 @@ p { margin: 0 0 15px; }
   margin-bottom: 26px;
 }
 
+/* The PNG has a transparent background, so the disc below is what gives the
+   portrait a ground — and it follows the theme instead of staying white. */
 .intro__photo {
   flex: none;
   width: 104px;
   height: 104px;
   border-radius: 50%;
   object-fit: cover;
-  object-position: center 20%;
-  filter: saturate(0.92);
+  object-position: center 12%;
+  background: var(--photo-bg);
 }
 
 .intro__name {

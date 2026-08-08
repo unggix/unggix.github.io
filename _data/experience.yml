@@ -1,5 +1,5 @@
 # Homepage "Experience" section. Newest first.
-# period: right-aligned date range. role / org / org_url / details (list).
+# period: right-aligned date range. role / org / details (list).
 
 - role: "Graduate Research Assistant"
   org: "Real-Time Computing Lab (RTCL), DGIST"
@@ -8,9 +8,21 @@
     - "Real-time systems, with a focus on DNN inference offloading between edge devices and servers under latency constraints."
     - "Image-adaptive JPEG compression: per-image quality factor and quantization table optimization for offloaded inference under variable network bandwidth."
 
+- role: "Undergraduate Group Research Program (UGRP)"
+  org: "DGIST"
+  period: "2024"
+  details:
+    - 'Team research project: <em>Noise Map-Driven Dynamic Frame Processing for Improved Object Detection in Low-Light Conditions</em>.'
+    - "Built a low-light detection pipeline in front of YOLO — Zero-DCE enhancement, CBDNet noise-map estimation, and MFDNet denoising — integrated into the detector's data loader."
+    - "Held the pipeline to real time by exploiting temporal redundancy between frames, processing one frame in five at 20 FPS."
+    - "Improved mAP by roughly 1% over the unenhanced baseline on BDD100k."
+
+- role: "Summer Session"
+  org: "University of California, Los Angeles (UCLA)"
+  period: "Jun — Aug 2023"
+
 - role: "B.S. in Electrical Engineering and Computer Science"
   org: "DGIST"
   period: "Feb 2020 — Feb 2026"
   details:
     - "GPA 3.82 / 4.30."
-    - "Course project on prompt-aware reinforcement learning for recommendation, published at ICTC 2025."

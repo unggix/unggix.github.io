@@ -72,16 +72,20 @@
 
   .wrap { max-width: none; padding: 0; }
 
-  .cv__masthead { padding: 0 0 12px; }
-  .cv__masthead h1 { font-size: 20pt; }
-  .cv__contact { font-size: 9pt; }
+  .cv { padding-bottom: 0; }
+  .cv__masthead { padding: 0 0 8px; }
+  .cv__masthead h1 { font-size: 19pt; margin-bottom: 6px; }
+  .cv__contact { font-size: 8.8pt; }
 
-  .cv section { padding: 12px 0; }
+  .cv section { padding: 8px 0; }
   .cv h1:not(.cv__masthead h1) {
-    font-size: 12.5pt;
-    margin: 14px 0 8px;
-    padding-top: 12px;
+    font-size: 12pt;
+    margin: 10px 0 6px;
+    padding-top: 9px;
   }
+  .cv > ul > li { margin-bottom: 5px; }
+  .cv ul ul { margin-top: 2px; }
+  .pub { padding-bottom: 0; }
 
   a { color: #000 !important; text-decoration: none; }
 

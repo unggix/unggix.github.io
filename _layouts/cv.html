@@ -9,7 +9,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/cv.css">
 </head>
 <body>
@@ -22,20 +22,15 @@
 <main class="sheet">
 
   <header class="head">
-    <img class="head__photo" src="/images/{{ site.author.avatar }}" alt="{{ site.author.name }}">
-    <div class="head__body">
-      {% assign parts = site.author.name | split: " " %}
-      <h1 class="head__name">
-        <span class="head__given">{{ parts[0] }}</span>&nbsp;<span class="head__family">{{ parts[1] }}</span>
-      </h1>
-      <p class="head__contact">
-        <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
-        <span class="pipe">|</span><a href="{{ site.url }}">{{ site.url | remove: "https://" }}</a>
-        <span class="pipe">|</span><a href="https://github.com/{{ site.author.github }}">github.com/{{ site.author.github }}</a>
-        <span class="pipe">|</span><a href="{{ site.author.googlescholar }}">Google Scholar</a>
-      </p>
-      <p class="head__tag">Real-time systems &middot; DNN inference offloading &middot; Image-adaptive compression</p>
-    </div>
+    <h1 class="head__name">{{ site.author.name }}</h1>
+    <p class="head__tag">Real-time systems &middot; DNN inference offloading &middot; Image-adaptive compression</p>
+    <p class="head__contact">
+      <a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a>
+      <span class="pipe">|</span><a href="{{ site.url }}">{{ site.url | remove: "https://" }}</a>
+      <span class="pipe">|</span><a href="https://github.com/{{ site.author.github }}">github.com/{{ site.author.github }}</a>
+      <span class="pipe">|</span><a href="{{ site.author.googlescholar }}">Google Scholar</a>
+      <span class="pipe">|</span>{{ site.author.location }}
+    </p>
   </header>
 
   {% comment %}
@@ -44,10 +39,7 @@
   {% endcomment %}
   {% for sec in site.data.resume %}
   <section class="sec">
-    <h2 class="sec__title">
-      <span class="sec__text"><span class="sec__lead">{{ sec.name | slice: 0, 3 }}</span>{{ sec.name | slice: 3, 60 }}</span>
-      <span class="sec__rule"></span>
-    </h2>
+    <h2 class="sec__title">{{ sec.name }}</h2>
 
     {% if sec.type == "skills" %}
     <table class="skills">
@@ -61,12 +53,12 @@
     <article class="entry">
       <div class="entry__row">
         <div class="entry__title">{{ post.title }}</div>
-        <div class="entry__loc">{{ post.venueshort | default: post.venue }}</div>
+        <div class="entry__date">{{ post.date | date: "%b. %Y" }}</div>
       </div>
       <div class="entry__row">
         {% capture me %}<span class="me">{{ site.author.name }}</span>{% endcapture %}
         <div class="entry__sub">{{ post.authors | replace: site.author.name, me }}</div>
-        <div class="entry__date">{{ post.date | date: "%b. %Y" }}</div>
+        <div class="entry__loc">{{ post.venueshort | default: post.venue }}</div>
       </div>
       <ul class="entry__bullets">
         <li>{{ post.venue }}{% if post.paperurl %} &mdash; <a href="{{ post.paperurl }}">PDF</a>{% endif %}{% if post.ieeeurl %} / <a href="{{ post.ieeeurl }}">IEEE Xplore</a>{% endif %}</li>
@@ -79,11 +71,11 @@
     <article class="entry">
       <div class="entry__row">
         <div class="entry__title">{{ e.title }}</div>
-        <div class="entry__loc">{{ e.location }}</div>
+        <div class="entry__date">{{ e.period }}</div>
       </div>
       <div class="entry__row">
         <div class="entry__sub">{{ e.subtitle }}</div>
-        <div class="entry__date">{{ e.period }}</div>
+        <div class="entry__loc">{{ e.location }}</div>
       </div>
       {% if e.bullets %}
       <ul class="entry__bullets">

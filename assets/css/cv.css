@@ -1,15 +1,17 @@
-/* CV sheet. Laid out for A4 print first; the on-screen page is the same
-   sheet on a grey desk. Generated to files/Unggi_Lee_CV.pdf by headless
-   Chrome, so @media print is the authoritative rendering. */
+/* CV sheet, in the manner of the built-in Google Docs resume templates:
+   one column, thin dividers, and a single accent carried by the name,
+   the section headings, and the rules.
+
+   Laid out for A4 print first — headless Chrome renders @media print into
+   files/Unggi_Lee_CV.pdf — with the screen view showing the same sheet. */
 
 :root {
-  --ink:      #1b1b1b;
-  --muted:    #4a4a4a;
-  --dim:      #7a7a7a;
-  --accent:   #c0392b;
-  --link:     #2f5d9e;
-  --rule:     #9a9a9a;
-  --sans:     "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --ink:    #202124;   /* Google Docs body grey-black */
+  --muted:  #3c4043;
+  --dim:    #5f6368;
+  --accent: #1a73e8;
+  --rule:   #dadce0;
+  --sans:   "Roboto", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
 }
 
 * { box-sizing: border-box; }
@@ -19,12 +21,12 @@ body {
   background: #6f6f72;
   color: var(--ink);
   font-family: var(--sans);
-  font-size: 10.6pt;
-  line-height: 1.45;
+  font-size: 10.4pt;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
 
-a { color: var(--link); text-decoration: none; }
+a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 .bar {
@@ -40,129 +42,99 @@ a:hover { text-decoration: underline; }
 .sheet {
   max-width: 210mm;
   margin: 0 auto 40px;
-  padding: 14mm 13mm;
+  padding: 16mm 15mm;
   background: #fff;
   box-shadow: 0 2px 18px rgba(0, 0, 0, 0.3);
 }
 
 /* ---------- masthead ---------- */
 
-.head {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  padding-bottom: 2px;
-}
-
-.head__photo {
-  flex: none;
-  width: 86px;
-  height: 86px;
-  border-radius: 50%;
-  object-fit: cover;
-  object-position: center 12%;
-  border: 1px solid #d0d0d0;
-  background: #f2f2f2;
-}
-
-.head__body { min-width: 0; flex: 1; text-align: center; }
+.head { margin-bottom: 16px; }
 
 .head__name {
-  margin: 0 0 5px;
-  font-size: 27pt;
-  line-height: 1.05;
-  letter-spacing: -0.01em;
+  margin: 0 0 3px;
+  font-size: 25pt;
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  color: var(--accent);
 }
-.head__given  { font-weight: 300; color: var(--dim); }
-.head__family { font-weight: 900; color: var(--ink); }
-
-.head__contact {
-  margin: 0 0 4px;
-  font-size: 8.6pt;
-  color: var(--muted);
-}
-.head__contact .pipe { color: #bbb; margin: 0 7px; }
 
 .head__tag {
+  margin: 0 0 5px;
+  font-size: 9.4pt;
+  color: var(--muted);
+}
+
+.head__contact {
   margin: 0;
   font-size: 8.8pt;
-  font-style: italic;
   color: var(--dim);
 }
+.head__contact .pipe { color: var(--rule); margin: 0 6px; }
 
 /* ---------- sections ---------- */
 
-.sec { margin-top: 9px; }
+.sec { margin-top: 15px; }
 
 .sec__title {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  margin: 0 0 6px;
-  font-size: 14pt;
-  font-weight: 700;
-  line-height: 1.1;
-  white-space: nowrap;
-}
-/* The name is one inline run — splitting it across flex items would open a
-   gap between the accented letters and the rest of the word. */
-.sec__text { flex: none; }
-.sec__lead { color: var(--accent); }
-.sec__rule {
-  flex: 1;
-  height: 1px;
-  background: var(--rule);
+  margin: 0 0 8px;
+  padding-bottom: 3px;
+  border-bottom: 1px solid var(--rule);
+  font-size: 10pt;
+  font-weight: 500;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  color: var(--accent);
 }
 
 /* ---------- entries ---------- */
 
-.entry { margin-bottom: 7px; }
+.entry { margin-bottom: 10px; }
 .entry:last-child { margin-bottom: 0; }
 
 .entry__row {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
-  gap: 14px;
+  gap: 16px;
 }
 
 .entry__title {
-  font-weight: 700;
-  font-size: 10.8pt;
-  line-height: 1.3;
+  font-weight: 500;
+  font-size: 10.6pt;
+  line-height: 1.35;
 }
 
 .entry__sub {
-  font-size: 8.6pt;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+  font-size: 9.6pt;
+  font-style: italic;
   color: var(--muted);
 }
-.entry__sub .me { color: var(--ink); }
+.entry__sub .me { font-style: normal; font-weight: 500; color: var(--ink); }
 
-.entry__loc,
-.entry__date {
+.entry__date,
+.entry__loc {
   flex: none;
-  font-style: italic;
-  font-size: 8.8pt;
+  font-size: 9.2pt;
+  color: var(--dim);
   white-space: nowrap;
   text-align: right;
 }
-.entry__loc  { color: var(--accent); }
-.entry__date { color: var(--dim); }
+.entry__date { font-weight: 500; }
+.entry__loc { font-style: italic; }
 
 .entry__bullets {
-  margin: 3px 0 0;
-  padding-left: 15px;
+  margin: 4px 0 0;
+  padding-left: 16px;
 }
 .entry__bullets li {
-  margin-bottom: 1px;
-  font-size: 9.6pt;
+  margin-bottom: 2px;
+  font-size: 9.8pt;
   color: var(--muted);
-  line-height: 1.4;
+  line-height: 1.45;
 }
-.entry__bullets li::marker { color: var(--accent); }
+.entry__bullets li::marker { color: var(--dim); }
 
 /* ---------- skills ---------- */
 
@@ -170,9 +142,9 @@ a:hover { text-decoration: underline; }
 .skills th {
   text-align: left;
   vertical-align: top;
-  padding: 1px 18px 1px 0;
+  padding: 1px 20px 1px 0;
   font-size: 9.8pt;
-  font-weight: 700;
+  font-weight: 500;
   white-space: nowrap;
 }
 .skills td {
@@ -184,7 +156,7 @@ a:hover { text-decoration: underline; }
 /* ---------- print ---------- */
 
 @media print {
-  @page { size: A4; margin: 10mm 12mm; }
+  @page { size: A4; margin: 14mm 15mm; }
 
   body { background: #fff; font-size: 10pt; }
   .no-print { display: none !important; }
@@ -196,9 +168,9 @@ a:hover { text-decoration: underline; }
     box-shadow: none;
   }
 
-  a { color: var(--link) !important; }
+  a { color: var(--accent) !important; }
 
-  .sec { break-inside: auto; margin-top: 8px; }
+  .sec { margin-top: 13px; }
   .sec__title { break-after: avoid; }
   .entry { break-inside: avoid; }
 }
@@ -206,10 +178,9 @@ a:hover { text-decoration: underline; }
 /* ---------- small screens ---------- */
 
 @media (max-width: 620px) {
-  .sheet { padding: 8mm 6mm; }
-  .head { flex-direction: column; text-align: center; gap: 12px; }
-  .head__name { font-size: 22pt; }
+  .sheet { padding: 9mm 7mm; }
+  .head__name { font-size: 21pt; }
   .head__contact .pipe { margin: 0 4px; }
   .entry__row { flex-direction: column; gap: 0; }
-  .entry__loc, .entry__date { text-align: left; }
+  .entry__date, .entry__loc { text-align: left; }
 }

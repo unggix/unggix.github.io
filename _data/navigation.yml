@@ -16,3 +16,6 @@ main:
 
   # - title: "CV"
   #   url: /cv-json/
+
+  - title: "Conference Info"
+    url: "https://unggix.github.io/conference-info/"

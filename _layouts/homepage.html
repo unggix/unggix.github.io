@@ -180,7 +180,10 @@
       try { localStorage.setItem('theme', dark ? 'light' : 'dark'); } catch (e) {}
     });
 
-    var links = Array.prototype.slice.call(document.querySelectorAll('.nav__links a'));
+
+    var links = Array.prototype.slice.call(
+      document.querySelectorAll('.nav__links a[href^="#"]')
+    );
     var sections = links.map(function (a) { return document.querySelector(a.getAttribute('href')); });
     var obs = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
